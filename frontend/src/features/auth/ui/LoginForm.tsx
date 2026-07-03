@@ -16,12 +16,12 @@ export default function LoginForm() {
   } = useForm({
     resolver: zodResolver(loginSchema),
   });
-  const { setUser } = useContext(GlobalContext);
+  const { setUser }: any = useContext(GlobalContext);
   const { showToast } = useToast();
   const navigate = useNavigate();
   const [load, setLoad] = useState(false);
 
-  const onSubmit = async (clientData) => {
+  const onSubmit = async (clientData: any) => {
     setLoad(true);
     try {
       const {data} = await AuthAPI.login(clientData);

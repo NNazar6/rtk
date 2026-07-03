@@ -5,16 +5,17 @@ import Loader from "../../../shared/loader/Loader";
 import { Link } from "react-router";
 import TeacherCard from "./TeacherCard";
 import { GlobalContext } from "../../../shared/context/GlobalContext";
+import TeacherFilter from "./TeacherFilter";
 
 export default function TeacherList() {
   const [load, setLoad] = useState(false);
   const { showToast } = useToast();
-  const {teachers, setTeachers} = useContext(GlobalContext);
-  const [filter, setFilter] = useState({})
-
+  const {teachers, setTeachers, filter}: any = useContext(GlobalContext);
+  console.log(filter);
+  
   useEffect(() => {
     setLoad(true);
-    TeacherAPI.getAllTeachers()
+    TeacherAPI.getAllTeachers({filter})
       .then((res: any) => {
         setTeachers(res.data.items);
       })
@@ -24,10 +25,11 @@ export default function TeacherList() {
       .finally(() => {
         setLoad(false);
       });
-  }, [setTeachers]);
+  }, [setTeachers, filter]);
   if (load) return <Loader />;
   return (
     <div>
+      <TeacherFilter/>
       {teachers.map((item): any => (
         <TeacherCard key={item.id} item={item} isInteractive={true} />
       ))}

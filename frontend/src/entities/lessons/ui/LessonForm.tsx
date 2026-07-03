@@ -23,7 +23,7 @@ export default function LessonForm({ teacher }) {
         try {
             await LessonsAPI.createLesson({ teacherId: teacher.id, ...data  })
 
-            showToast(`Ваша заявка успешно отправлена ${user.name} на рассмотрение!`, 'win')
+            showToast(`Ваша заявка успешно отправлена ${teacher.name} на рассмотрение!`, 'win')
         } catch (error) {
             showToast(`Ваша заявка, к сожалению, не отправлена`, 'error')
             

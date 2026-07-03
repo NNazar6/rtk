@@ -23,6 +23,15 @@ export default function Layout() {
         <nav className="navbar">
           <ul className="list">
             <li className="list-item">
+              <a href="/" className="logo">
+                <img src="/logo.svg" alt="logo image" style={{
+                  width: '50px',
+                  backgroundColor: 'white',
+                  borderRadius: '25px'
+                }} />
+              </a>
+            </li>
+            <li className="list-item">
               <NavLink to={""}>Найти преподавателя</NavLink>
             </li>
             {user ? (

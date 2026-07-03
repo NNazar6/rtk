@@ -8,6 +8,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [teachers, setTeachers] = useState([]);
   const [lessons, setLessons] = useState([])
+  const [filter, setFilter] = useState([])
   const locUser = localStorage.getItem('user')
   useEffect(() => {
     if (locUser) {
@@ -16,7 +17,7 @@ function App() {
   }, [])
   return (
     <ToastProvider>
-      <GlobalContext value={{ teachers, setTeachers, user, setUser, lessons, setLessons }}>
+      <GlobalContext value={{ filter, setFilter, teachers, setTeachers, user, setUser, lessons, setLessons }}>
         <RouterProvider router={router} />
       </GlobalContext>
     </ToastProvider>
