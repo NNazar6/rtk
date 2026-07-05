@@ -49,7 +49,7 @@ export default function TeacherProfile() {
       <a href='#' onClick={() => callTeacher()}>
         {teacher.contacts}
       </a> <br />
-      {user && (
+      {user.role === 'student' && (
         <>
         <button className="create"
           onClick={() => setShow(!show)}>

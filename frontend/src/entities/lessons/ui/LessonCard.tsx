@@ -9,11 +9,13 @@ export default function LessonCard({ lesson }: any) {
   const { user }: any = useContext(GlobalContext);
   const [load, setLoad] = useState(false);
   const { showToast } = useToast();
+  const {status, setStatus} = useState(lesson.status)
+
   const onSubmit = async (status: string) => {
     setLoad(false);
     
     try {
-        lesson.status = status
+        // lesson.status = status
         await LessonsAPI.patchLessons(status, lesson.id);
         showToast(
             status === "cancelled"
@@ -22,7 +24,6 @@ export default function LessonCard({ lesson }: any) {
             ? "Заявка успешно отклонена"
             : "Заявка успешно принята",
         );
-        window.location.reload()
     } catch (error) {
         showToast("Не удалось отменить заявку", "error");
     } finally {
