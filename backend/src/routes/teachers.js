@@ -46,7 +46,7 @@ router.get('/', async (req, res) => {
     const include = [
       {
         model: TeacherProfile,
-        required: Object.getOwnPropertySymbols(profileWhere).length > 0,
+        required: Object.keys(profileWhere).length > 0,
         where: Object.getOwnPropertySymbols(profileWhere).length > 0 ? profileWhere : undefined,
       },
       {
